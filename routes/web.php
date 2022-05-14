@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	if (auth()->user() === null)
+	{
+		return redirect('/login');
+	}
+
+	return 'hello world';
+});
+Route::get('/register', function () {
+	return view('session.register');
+});
+Route::get('/login', function () {
+	return view('session.login');
 });
