@@ -26,8 +26,11 @@
             <img src="{{ asset('assets/Vectorburger-button.png') }}" alt="=">
         </button>
         <div class="hidden lg:flex">
-            <h1 class="font-bold pr-5 border-r-2">Takeshi K.</h1>
-            <button class="pl-5">{{ __('ui.Log Out') }}</button>
+            <h1 class="font-bold pr-5 border-r-2">{{ auth()->user()->username }}</h1>
+            <form method="POST" action="/logout">
+                @csrf
+                <button class="pl-5">{{ __('ui.Log Out') }}</button>
+            </form>
         </div>
     </div>
 </header>

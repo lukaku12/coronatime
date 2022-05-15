@@ -1,7 +1,7 @@
 <x-layout>
     <x-form-wrapper>
         <x-form.header main_text="Welcome to Coronatime" secondary_text="Please enter required info to sign up"/>
-        <form class="mt-4 lg:w-full">
+        <form method="POST" action="/register/create" class="mt-4 lg:w-full">
             @csrf
             <x-form.input name="username" translatable="Username" placeholder="Enter unique username"/>
             <x-form.input name="email" type="email" translatable="Email" placeholder="Enter your email"/>

@@ -11,7 +11,12 @@
                name="{{ $name }}"
                id="{{ $name }}"
                type="{{ $type }}"
+               value="{{ old($name) }}"
                placeholder="{{ __('session.' . $placeholder) }}"
+               required
         >
+        @error($name)
+            <p class="text-red-600">{{ $message }}</p>
+        @enderror
     </div>
 </div>

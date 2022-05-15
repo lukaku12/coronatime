@@ -1,11 +1,10 @@
 <x-layout>
     <x-form-wrapper>
         <x-form.header main_text="Welcome back" secondary_text="Welcome back! Please enter your details"/>
-        <form class="mt-4 lg:w-full">
+        <form class="mt-4 lg:w-full" method="POST" action="/sessions">
             @csrf
             <x-form.input name="username" translatable="Username" placeholder="Enter unique username or email"/>
-            <x-form.input name="password" type="password" translatable="Password"
-                          placeholder="Fill in password"/>
+            <x-form.input name="password" type="password" translatable="Password" placeholder="Fill in password"/>
 
             <x-form.checkbox name="Remember this device" password_reset="Forgot password?"/>
 
