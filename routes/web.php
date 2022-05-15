@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CoronatimeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,9 @@ Route::group(['middleware' => 'language'], function () {
 	Route::get('/login', [SessionsController::class, 'index'])->middleware('guest');
 	Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
 	Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+	Route::get('/forgot-password', [PasswordResetController::class, 'index'])->middleware('guest');
+	// add token slug
+	Route::get('/reset-password', [PasswordResetController::class, 'show'])->middleware('guest');
 });
 Route::get('set-language/{language}', [LanguageController::class, 'index']);

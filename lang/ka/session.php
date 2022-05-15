@@ -26,4 +26,9 @@ return [
 	'Forgot password?'                                  => 'დაგავიწყდა პაროლი?',
 	'Your provided credentials could not be verified.'  => 'თქვენი შეყვანილი მონაცემები არ არის სწორი.',
 	'Passwords do not match!'                           => 'შეყვანილი პაროლები არ ემთხვევა!',
+	// reset password
+	'Reset Password'                                    => 'პაროლის აღდგენა',
+	'New password'                                      => 'ახალი პაროლი',
+	'Enter new password'                                => 'შეიყვანე ახალი პაროლი',
+	'SUBMIT'                                            => 'დადასტურება',
 ];

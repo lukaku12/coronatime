@@ -6,7 +6,7 @@
     </div>
     @if(!$password_reset == "")
         <div class="text-right">
-            <a class="text-blue-700 font-bold" href="">{{ __('session.' . $password_reset) }}</a>
+            <a class="text-blue-700 font-bold" href="/forgot-password">{{ __('session.' . $password_reset) }}</a>
         </div>
     @endif
 

@@ -26,4 +26,9 @@ return [
 	'Forgot password?'                                  => 'Forgot password?',
 	'Your provided credentials could not be verified.'  => 'Your provided credentials could not be verified.',
 	'Passwords do not match!'                           => 'Passwords do not match!',
+	// reset password
+	'Reset Password'                                    => 'Reset Password',
+	'New password'                                      => 'New password',
+	'Enter new password'                                => 'Enter new password',
+	'SUBMIT'                                            => 'SUBMIT',
 ];
