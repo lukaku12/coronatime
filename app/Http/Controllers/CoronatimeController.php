@@ -8,8 +8,7 @@ class CoronatimeController extends Controller
 {
 	public function index()
 	{
-		//    remove !
-		if (!auth()->user() === null)
+		if (!auth()->user())
 		{
 			return redirect('/login');
 		}

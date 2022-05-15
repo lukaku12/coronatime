@@ -25,7 +25,7 @@ class RegisterController extends Controller
 		if ($password !== $repeat_password)
 		{
 			throw ValidationException::withMessages([
-				'repeat_password' => 'Passwords do not match!',
+				'repeat_password' => __('session.Passwords do not match!'),
 			]);
 		}
 

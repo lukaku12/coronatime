@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
 	Route::get('/', [CoronatimeController::class, 'index']);
-	Route::get('/worldwide', [CoronatimeController::class, 'show'])->name('worldwide');
-	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->name('by-country');
+	Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware('auth')->name('worldwide');
+	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware('auth')->name('by-country');
 
 	Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 	Route::post('/register/create', [RegisterController::class, 'store'])->middleware('guest');
 
 	Route::get('/login', [SessionsController::class, 'index'])->middleware('guest');
 	Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
-	Route::post('/logout', [SessionsController::class, 'destroy']);
+	Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 });
 Route::get('set-language/{language}', [LanguageController::class, 'index']);

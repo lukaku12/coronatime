@@ -16,7 +16,7 @@
                required
         >
         @error($name)
-            <p class="text-red-600">{{ $message }}</p>
+            <p class="text-red-600 mt-2">{{ $message }}</p>
         @enderror
     </div>
 </div>

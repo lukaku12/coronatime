@@ -24,4 +24,6 @@ return [
 	'Welcome back'                                      => 'Welcome back',
 	'Welcome back! Please enter your details'           => 'Welcome back! Please enter your details',
 	'Forgot password?'                                  => 'Forgot password?',
+	'Your provided credentials could not be verified.'  => 'Your provided credentials could not be verified.',
+	'Passwords do not match!'                           => 'Passwords do not match!',
 ];

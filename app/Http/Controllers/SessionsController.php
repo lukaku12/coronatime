@@ -24,7 +24,7 @@ class SessionsController extends Controller
 		if (!auth()->attempt($attributes, ))
 		{
 			throw ValidationException::withMessages([
-				'password' => 'Your Provided credentials could not be Verified.',
+				'password' => __('session.Your provided credentials could not be verified.'),
 			]);
 		}
 		session()->regenerate();

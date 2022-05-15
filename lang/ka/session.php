@@ -24,4 +24,6 @@ return [
 	'Welcome back'                                      => 'კეთილი იყოს თქვენი დაბრუნება',
 	'Welcome back! Please enter your details'           => 'კეთილი იყოს თქვენი დაბრუნება! გთხოვთ შეიყვანოთ თქვენი დეტალები',
 	'Forgot password?'                                  => 'დაგავიწყდა პაროლი?',
+	'Your provided credentials could not be verified.'  => 'თქვენი შეყვანილი მონაცემები არ არის სწორი.',
+	'Passwords do not match!'                           => 'შეყვანილი პაროლები არ ემთხვევა!',
 ];
