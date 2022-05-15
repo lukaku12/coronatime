@@ -14,16 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	if (auth()->user() === null)
+	//    remove !
+	if (!auth()->user() === null)
 	{
 		return redirect('/login');
 	}
-
-	return 'hello world';
+	return redirect('/worldwide');
 });
+Route::get('/worldwide', function () {
+	return view('index');
+})->name('worldwide');
+Route::get('/by-country', function () {
+	return view('by-country');
+})->name('by-country');
+
 Route::get('/register', function () {
 	return view('session.register');
 });
+
 Route::get('/login', function () {
 	return view('session.login');
 });
