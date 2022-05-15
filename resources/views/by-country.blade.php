@@ -1,3 +1,4 @@
+
 <x-layout>
     <div class="w-full h-full flex flex-col items-center">
         <div class="w-11/12 h-auto">
@@ -12,7 +13,19 @@
                         <input type="text" name="search_by_country" id="search_by_country"
                                class="lg:focus:border lg:focus:border-gray-700  focus:outline-none block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3"
                                placeholder="{{ __('ui.Search by country') }}">
-                    {{--    TODO table     --}}
+                    </div>
+                    <div class="mt-7 w-full">
+                        <table class="table-fixed h-1/3 divide-y divide-gray-300 w-full border-gray-300 border mb-5"
+                        >
+                            <x-table-head/>
+                            <tbody class="overflow-y-scroll divide-y divide-gray-200 bg-white max-w-full"
+                            >
+                                @foreach($statistics as $statistic)
+                                    <x-table-row :location="$statistic->name"/>
+                                @endforeach
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
             </main>

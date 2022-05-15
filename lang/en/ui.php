@@ -13,4 +13,5 @@ return [
 	'Statistics by country' => 'Statistics by country',
 	'Log Out'               => 'Log Out',
 	'Search by country'     => 'Search by country',
+	'Location'              => 'Location',
 ];

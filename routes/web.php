@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CoronatimeController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,25 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	//    remove !
-	if (!auth()->user() === null)
-	{
-		return redirect('/login');
-	}
-	return redirect('/worldwide');
-});
-Route::get('/worldwide', function () {
-	return view('index');
-})->name('worldwide');
-Route::get('/by-country', function () {
-	return view('by-country');
-})->name('by-country');
+Route::group(['middleware' => 'language'], function () {
+	Route::get('/', [CoronatimeController::class, 'index']);
+	Route::get('/worldwide', [CoronatimeController::class, 'show'])->name('worldwide');
+	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->name('by-country');
 
-Route::get('/register', function () {
-	return view('session.register');
+	Route::get('/register', [RegisterController::class]);
+	Route::get('/login', [SessionsController::class]);
 });
-
-Route::get('/login', function () {
-	return view('session.login');
-});
+Route::get('set-language/{language}', [LanguageController::class, 'index']);

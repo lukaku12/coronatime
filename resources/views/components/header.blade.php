@@ -1,15 +1,27 @@
+@php
+    $language = app()->getLocale('language')
+@endphp
 <header class="flex items-center justify-between w-full mb-10">
     <div class="w-1/2">
-        <img class="py-5 pointer-events-none select-none"
-             src="{{ asset('assets/coronatime-logo.png') }}"
-             alt="Coronatime"
-        >
+        <a href="{{ route('worldwide') }}">
+            <img class="py-5"
+                 src="{{ asset('assets/coronatime-logo.png') }}"
+                 alt="Coronatime"
+            >
+        </a>
     </div>
     <div class="flex w-1/2 h-full justify-end gap-11">
-        <button class="flex items-center gap-2 items-end">
-            <h2>{{ __('ui.English') }}</h2>
-            <img src="{{ asset('assets/down-arrow.png') }}" alt="=">
-        </button>
+        <div x-data="{ show: false }" @click.away="show = false" @click="show = ! show">
+            <button class="flex items-center gap-2 items-end relative"
+            >
+                <h2>{{ $language === 'ka' ? __('ui.Georgian') : __('ui.English') }}</h2>
+                <img src="{{ asset('assets/down-arrow.png') }}" alt="=">
+
+            </button>
+            <div x-show="show" class="absolute">
+                <a href="/set-language/{{ $language === 'ka' ? 'en' : 'ka' }}">{{ $language === 'ka' ? __('ui.English') : __('ui.Georgian') }}</a>
+            </div>
+        </div>
         <button class="lg:hidden">
             <img src="{{ asset('assets/Vectorburger-button.png') }}" alt="=">
         </button>

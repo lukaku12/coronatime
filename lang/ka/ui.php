@@ -13,4 +13,5 @@ return [
 	'Statistics by country' => 'სტატისტიკა ქვეყნების მიხედვით',
 	'Log Out'               => 'გასვლა',
 	'Search by country'     => 'ძებნა ქვეყნის მიხედვით',
+	'Location'              => 'მდებარეობა',
 ];
