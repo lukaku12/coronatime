@@ -1,4 +1,3 @@
-
 <x-layout>
     <div class="w-full h-full flex flex-col items-center">
         <div class="w-11/12 h-auto">
@@ -20,9 +19,13 @@
                             <x-table-head/>
                             <tbody class="overflow-y-scroll divide-y divide-gray-200 bg-white max-w-full"
                             >
-                                @foreach($statistics as $statistic)
-                                    <x-table-row :location="$statistic->name"/>
-                                @endforeach
+                            @foreach($countryStatistics as $countryStatistic)
+                                <x-table-row :location="$countryStatistic->country"
+                                             :new_cases="$countryStatistic->confirmed"
+                                             :death="$countryStatistic->recovered"
+                                             :recovered="$countryStatistic->deaths"
+                                />
+                            @endforeach
                             </tbody>
 
                         </table>

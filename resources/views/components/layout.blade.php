@@ -10,7 +10,7 @@
     <link rel="icon" href="{{ URL::asset('assets/icon.png') }}" type="image/x-icon">
     <title>{{ __('ui.Coronatime') }}</title>
 </head>
-<body class="w-screen h-screen flex flex-col justify-center items-center">
+<body class="w-screen h-screen flex flex-col justify-center items-center overflow-x-hidden">
 {{ $slot }}
 </body>
 </html>

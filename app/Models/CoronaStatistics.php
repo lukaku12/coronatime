@@ -13,4 +13,9 @@ class CoronaStatistics extends Model
 	protected $guarded = [];
 
 	public $translatable = ['name'];
+
+	public function covidCountry()
+	{
+		return $this->hasOne(CovidCountry::class);
+	}
 }

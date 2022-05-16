@@ -7,10 +7,10 @@
                     name="Worldwide Statistics"
                 />
                 <section class="flex flex-col gap-4 mt-7 w-full lg:flex-row">
-                    <x-primary-card amount="715523"/>
+                    <x-primary-card amount="{{ $total_cases }}"/>
                     <div class="flex gap-4 lg:w-4/5">
-                        <x-secondary-card name="Recovered" bg_color="bg-green-100" image="recovered.png" amount="72005" />
-                        <x-secondary-card name="Death" bg_color="bg-yellow-100" image="death.png" amount="8332" />
+                        <x-secondary-card name="Recovered" bg_color="bg-green-100" image="recovered.png" amount="{{ $recovered }}" />
+                        <x-secondary-card name="Death" bg_color="bg-yellow-100" image="death.png" amount="{{ $deaths }}" />
                     </div>
                 </section>
             </main>

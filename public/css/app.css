@@ -440,21 +440,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .left-0 {
   left: 0px;
 }
-.bottom-1\.5 {
-  bottom: 0.375rem;
-}
-.bottom-1 {
-  bottom: 0.25rem;
-}
-.bottom-2\.5 {
-  bottom: 0.625rem;
-}
-.bottom-2 {
-  bottom: 0.5rem;
-}
-.bottom-5 {
-  bottom: 1.25rem;
-}
 .bottom-7 {
   bottom: 1.75rem;
 }
@@ -480,20 +465,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-4 {
   margin-top: 1rem;
 }
-.mt-2 {
-  margin-top: 0.5rem;
-}
-.mt-8 {
-  margin-top: 2rem;
-}
-.mt-3 {
-  margin-top: 0.75rem;
+.mt-11 {
+  margin-top: 2.75rem;
 }
 .mt-2\.5 {
   margin-top: 0.625rem;
 }
-.mt-11 {
-  margin-top: 2.75rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 .block {
   display: block;
@@ -549,10 +528,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .table-fixed {
   table-layout: fixed;
 }
-.translate-x-2\/4 {
-  --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .-translate-x-2\/4 {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -602,6 +577,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 .overflow-y-scroll {
   overflow-y: scroll;
@@ -656,13 +634,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
 }
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 .py-3 {
   padding-top: 0.75rem;
@@ -740,18 +718,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-bold {
   font-weight: 700;
 }
+.font-extra-bold {
+  font-weight: 800;
+}
 .font-semibold {
   font-weight: 600;
 }
 .font-medium {
   font-weight: 500;
 }
-.font-extra-bold {
-  font-weight: 800;
-}
 .text-blue-800 {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .text-gray-900 {
   --tw-text-opacity: 1;
@@ -760,10 +742,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .text-blue-700 {
   --tw-text-opacity: 1;
@@ -816,14 +794,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:mt-32 {
     margin-top: 8rem;
-  }
-
-  .lg\:mt-24 {
-    margin-top: 6rem;
-  }
-
-  .lg\:-mt-16 {
-    margin-top: -4rem;
   }
 
   .lg\:mt-16 {
@@ -882,15 +852,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 42rem;
   }
 
-  .lg\:flex-shrink-0 {
-    flex-shrink: 0;
-  }
-
-  .lg\:translate-x-2\/4 {
-    --tw-translate-x: 50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
   .lg\:translate-x-0 {
     --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -929,16 +890,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: 1.125rem;
   }
 
-  .lg\:focus\:bottom-1:focus {
-    bottom: 0.25rem;
-  }
-
   .lg\:focus\:border:focus {
     border-width: 1px;
-  }
-
-  .lg\:focus\:border-b-2:focus {
-    border-bottom-width: 2px;
   }
 
   .lg\:focus\:border-gray-700:focus {
