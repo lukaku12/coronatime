@@ -28,7 +28,6 @@ class Kernel extends ConsoleKernel
 				$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code])->json();
 				extract($statistics);
 				$data = [
-					'id'         => $id,
 					'country'    => $name,
 					'code'       => $code,
 					'confirmed'  => $confirmed,
@@ -38,7 +37,8 @@ class Kernel extends ConsoleKernel
 					'created_at' => $created_at,
 					'updated_at' => $updated_at,
 				];
-				Statistic::update($data);
+				$statistic = Statistic::find($id);
+				$statistic->update($data);
 			}
 		})->daily();
 	}
