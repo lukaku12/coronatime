@@ -22,9 +22,22 @@
                 <a href="/set-language/{{ $language === 'ka' ? 'en' : 'ka' }}">{{ $language === 'ka' ? __('ui.English') : __('ui.Georgian') }}</a>
             </div>
         </div>
-        <button class="lg:hidden">
-            <img src="{{ asset('assets/Vectorburger-button.png') }}" alt="=">
-        </button>
+        {{--burgir--}}
+        <div class="relative text-center" x-data="{ show: false }" @click.away="show = false">
+            <button class="lg:hidden"
+                    @click="show = ! show">
+                <img src="{{ asset('assets/Vectorburger-button.png') }}" alt="=">
+            </button>
+            <div class="absolute border rounded-md p-3 right-0 w-auto w-max" x-show="show">
+                <h1 class="font-bold">{{ ucwords(auth()->user()->username) }}</h1>
+                <hr class="my-1"/>
+                <form method="POST" class="w-full" action="/logout">
+                    @csrf
+                    <button class="text-gray-400">{{ __('ui.Log Out') }}</button>
+                </form>
+            </div>
+        </div>
+        {{--endburgir--}}
         <div class="hidden lg:flex">
             <h1 class="font-bold pr-5 border-r-2">{{ ucwords(auth()->user()->username) }}</h1>
             <form method="POST" action="/logout">
