@@ -28,7 +28,7 @@
                     @click="show = ! show">
                 <img src="{{ asset('assets/Vectorburger-button.png') }}" alt="=">
             </button>
-            <div class="absolute border rounded-md p-3 right-0 w-auto w-max" x-show="show">
+            <div class="absolute border rounded-md p-3 right-0 w-auto w-max bg-white" x-show="show">
                 <h1 class="font-bold">{{ ucwords(auth()->user()->username) }}</h1>
                 <hr class="my-1"/>
                 <form method="POST" class="w-full" action="/logout">

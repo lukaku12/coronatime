@@ -6,16 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class CoronaStatistics extends Model
+class Statistic extends Model
 {
 	use HasFactory, HasTranslations;
 
+	public $translatable = ['country'];
+
 	protected $guarded = [];
-
-	public $translatable = ['name'];
-
-	public function covidCountry()
-	{
-		return $this->hasOne(CovidCountry::class);
-	}
 }

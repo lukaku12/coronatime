@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Models\Statistic;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Http;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,7 +18,29 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		// $schedule->command('inspire')->hourly();
+		$schedule->call(function () {
+			$responseArray = Http::get('https://devtest.ge/countries')->json();
+
+			$data = [];
+			foreach ($responseArray as $response)
+			{
+				extract($response);
+				$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code])->json();
+				extract($statistics);
+				$data = [
+					'id'         => $id,
+					'country'    => $name,
+					'code'       => $code,
+					'confirmed'  => $confirmed,
+					'recovered'  => $recovered,
+					'critical'   => $critical,
+					'deaths'     => $deaths,
+					'created_at' => $created_at,
+					'updated_at' => $updated_at,
+				];
+				Statistic::update($data);
+			}
+		})->daily();
 	}
 
 	/**

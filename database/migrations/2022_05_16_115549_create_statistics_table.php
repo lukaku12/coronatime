@@ -12,11 +12,16 @@ return new class extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('corona_statistics', function (Blueprint $table) {
+		Schema::create('statistics', function (Blueprint $table) {
 			$table->id();
-			$table->text('code');
-			$table->json('name');
-			$table->timestamps();
+			$table->json('country');
+			$table->string('code');
+			$table->integer('confirmed');
+			$table->integer('recovered');
+			$table->integer('critical');
+			$table->integer('deaths');
+			$table->timestamp('created_at');
+			$table->timestamp('updated_at');
 		});
 	}
 
@@ -27,6 +32,6 @@ return new class extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('corona_statistics');
+		Schema::dropIfExists('statistics');
 	}
 };

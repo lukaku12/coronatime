@@ -19,11 +19,11 @@
                             <x-table-head/>
                             <tbody class="overflow-y-scroll divide-y divide-gray-200 bg-white max-w-full"
                             >
-                            @foreach($countryStatistics as $countryStatistic)
-                                <x-table-row :location="$countryStatistic->country"
-                                             :new_cases="$countryStatistic->confirmed"
-                                             :death="$countryStatistic->recovered"
-                                             :recovered="$countryStatistic->deaths"
+                            @foreach($statistics as $statistic)
+                                <x-table-row :location="$statistic->country"
+                                             :new_cases="$statistic->confirmed"
+                                             :death="$statistic->recovered"
+                                             :recovered="$statistic->deaths"
                                 />
                             @endforeach
                             </tbody>
