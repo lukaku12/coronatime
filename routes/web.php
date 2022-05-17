@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CoronatimeController;
+use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
@@ -20,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
 	Route::get('/', [CoronatimeController::class, 'index']);
-	Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware('auth')->name('worldwide');
-	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware('auth')->name('by-country');
+	Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware(['auth', 'verified'])->name('worldwide');
+	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware(['auth', 'verified'])->name('by-country');
 
 	Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 	Route::post('/register/create', [RegisterController::class, 'store'])->middleware('guest');
@@ -32,6 +33,20 @@ Route::group(['middleware' => 'language'], function () {
 
 	Route::get('/forgot-password', [PasswordResetController::class, 'index'])->middleware('guest');
 	// add token slug
-	Route::get('/reset-password', [PasswordResetController::class, 'show'])->middleware('guest');
+//	Route::get('/reset-password', [PasswordResetController::class, 'show'])->middleware('guest');
+
+	//verify email
+
+	Route::get('/verify-email', [EmailVerificationController::class, 'show'])
+		->middleware('auth')
+		->name('verification.notice');
+
+	Route::post('/verify-email/request', [EmailVerificationController::class, 'request'])
+		->middleware('auth')
+		->name('verification.request');
+
+	Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+		->middleware(['auth', 'signed'])
+		->name('verification.verify');
 });
 Route::get('set-language/{language}', [LanguageController::class, 'index']);

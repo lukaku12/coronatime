@@ -31,4 +31,7 @@ return [
 	'New password'                                      => 'ახალი პაროლი',
 	'Enter new password'                                => 'შეიყვანე ახალი პაროლი',
 	'SUBMIT'                                            => 'დადასტურება',
+	'Confirmation Email Has Been Sent!'                 => 'დადასტურების ლინკი გამოიგზავნა მეილზე!',
+	'please confirm your email before we continue'      => 'გთხოვთ, დაადასტუროთ თქვენი ელფოსტა სანამ გავაგრძელებთ',
+	'Request a new link'                                => 'მოითხოვნეთ ახალი ლინკი',
 ];

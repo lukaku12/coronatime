@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
@@ -35,9 +36,10 @@ class RegisterController extends Controller
 			'password' => bcrypt($password),
 		]);
 
-		// LOG THE USER IN
+		event(new Registered($user));
+//		// LOG THE USER IN
 		auth()->login($user);
 
-		return redirect('/')->with('success', 'Your account has been created!');
+		return redirect('/verify-email');
 	}
 }
