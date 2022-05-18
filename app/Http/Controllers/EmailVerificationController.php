@@ -27,8 +27,6 @@ class EmailVerificationController extends Controller
 	{
 		$request->fulfill();
 
-		auth()->logout();
-
 		return redirect('/');
 	}
 }
