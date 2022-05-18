@@ -31,9 +31,13 @@ Route::group(['middleware' => 'language'], function () {
 	Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
 	Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-	Route::get('/forgot-password', [PasswordResetController::class, 'index'])->middleware('guest');
-	// add token slug
-//	Route::get('/reset-password', [PasswordResetController::class, 'show'])->middleware('guest');
+	// reset password
+	Route::get('forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+	Route::post('forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+	Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
+	Route::post('reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+	// end reset password
 
 	//verify email
 

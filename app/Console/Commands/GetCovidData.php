@@ -13,14 +13,14 @@ class GetCovidData extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'command:name';
+	protected $signature = 'create:covid-data';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description';
+	protected $description = 'Get Initial Covid Data and Add it To database';
 
 	/**
 	 * Execute the console command.
