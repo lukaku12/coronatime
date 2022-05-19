@@ -7,31 +7,22 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class PasswordResetController extends Controller
 {
-	/**
-	 * Write code on Method
-	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View()
-	 */
 	public function showForgetPasswordForm()
 	{
 		return view('session.forgot-password');
 	}
 
-	/**
-	 * Write code on Method
-	 *
-	 * @return \Illuminate\Http\RedirectResponse()
-	 */
 	public function submitForgetPasswordForm(Request $request)
 	{
 		$request->validate([
 			'email' => 'required|email|exists:users',
 		]);
+		session()->put('email', $request->email);
 
 		$token = Str::random(64);
 
@@ -46,48 +37,50 @@ class PasswordResetController extends Controller
 			$message->subject('Reset Password');
 		});
 
-		return back()->with('message', 'We have e-mailed your password reset link!');
+		return view('session.sent-email-to-reset-password');
 	}
 
-	/**
-	 * Write code on Method
-	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View()
-	 */
 	public function showResetPasswordForm($token)
 	{
 		return view('session.reset-password', ['token' => $token]);
 	}
 
-	/**
-	 * Write code on Method
-	 *
-	 * @return \Illuminate\Http\RedirectResponse()
-	 */
 	public function submitResetPasswordForm(Request $request)
 	{
 		$request->validate([
-			'password'              => 'required|confirmed',
+			'password'              => 'required|min:6',
 			'password_confirmation' => 'required',
 		]);
+		if ($request->password !== $request->password_confirmation)
+		{
+			{
+				throw ValidationException::withMessages([
+					'password_confirmation' => 'Passwords Do Not Match!',
+				]);
+			}
+		}
 
 		$updatePassword = DB::table('password_resets')
 			->where([
-				'email' => $this->email,
+				'email' => $request->session()->get('email'),
 				'token' => $request->token,
 			])
 			->first();
 
 		if (!$updatePassword)
 		{
-			return back()->withInput()->with('error', 'Invalid token!');
+			{
+				throw ValidationException::withMessages([
+					'password_confirmation' => __('Invalid Token'),
+				]);
+			}
 		}
 
-		$user = User::where('email', $request->email)
-			->update(['password' => Hash::make($request->password)]);
+		$user = User::where('email', $request->session()->get('email'))
+			->update(['password' => bcrypt($request->password)]);
 
-		DB::table('password_resets')->where(['email'=> $request->email])->delete();
+		DB::table('password_resets')->where(['email'=> $request->session()->get('email')])->delete();
 
-		return redirect('/login')->with('message', 'Your password has been changed!');
+		return view('session.password-has-been-updated');
 	}
 }

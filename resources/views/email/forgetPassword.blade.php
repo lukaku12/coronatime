@@ -1,4 +1,6 @@
-<h1>Forget Password Email</h1>
-
-You can reset password from bellow link:
-<a href="{{ route('reset.password.get', $token) }}">Reset Password</a>
+<x-email-template
+    main_text="RECOVER PASSWORD"
+    secondary_text="click this button to recover a password"
+    action="{{ route('reset.password.get', $token) }}"
+    action_name="Reset Password"
+/>

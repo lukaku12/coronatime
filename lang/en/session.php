@@ -34,4 +34,6 @@ return [
 	'Confirmation Email Has Been Sent!'                 => 'Confirmation Email Has Been Sent!',
 	'please confirm your email before we continue'      => 'please confirm your email before we continue',
 	'Request a new link'                                => 'Request a new link',
+	'Sign In'                                           => 'Sign In',
+	'Your password has been updated successfully'       => 'Your password has been updated successfully',
 ];

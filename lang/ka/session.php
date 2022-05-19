@@ -34,4 +34,6 @@ return [
 	'Confirmation Email Has Been Sent!'                 => 'დადასტურების ლინკი გამოიგზავნა მეილზე!',
 	'please confirm your email before we continue'      => 'გთხოვთ, დაადასტუროთ თქვენი ელფოსტა სანამ გავაგრძელებთ',
 	'Request a new link'                                => 'მოითხოვნეთ ახალი ლინკი',
+	'Sign In'                                           => 'შესვლა',
+	'Your password has been updated successfully'       => 'თქვენი პაროლი წარმატებით განახლდა',
 ];
