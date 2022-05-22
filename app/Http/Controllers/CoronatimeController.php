@@ -37,9 +37,8 @@ class CoronatimeController extends Controller
 	public function showByCountry()
 	{
 		return view('by-country', [
-			'statistics'  => Statistic::latest()->filter(
-				request(['search'])
-			)->get(),
+			'statistics'  => Statistic::orderBy(request('sort_by') ?? 'confirmed', request('order_direction') ?? 'DESC')
+				->filter(request(['search']))->get(),
 		]);
 	}
 }

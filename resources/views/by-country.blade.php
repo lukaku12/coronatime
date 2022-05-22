@@ -26,8 +26,8 @@
                                 @foreach($statistics as $statistic)
                                     <x-table-row :location="$statistic->country"
                                                  :new_cases="$statistic->confirmed"
-                                                 :death="$statistic->recovered"
-                                                 :recovered="$statistic->deaths"
+                                                 :death="$statistic->deaths"
+                                                 :recovered="$statistic->recovered"
                                     />
                                 @endforeach
                             </tbody>
