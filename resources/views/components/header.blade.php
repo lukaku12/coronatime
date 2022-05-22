@@ -14,12 +14,12 @@
         <div x-data="{ show: false }" @click.away="show = false" @click="show = ! show">
             <button class="flex items-center gap-2 items-end relative"
             >
-                <h2>{{ $language === 'ka' ? __('ui.Georgian') : __('ui.English') }}</h2>
+                <h2>{{ $language === 'ka' ? __('ui.georgian') : __('ui.english') }}</h2>
                 <img src="{{ asset('assets/down-arrow.png') }}" alt="=">
 
             </button>
             <div x-show="show" class="absolute">
-                <a href="/set-language/{{ $language === 'ka' ? 'en' : 'ka' }}">{{ $language === 'ka' ? __('ui.English') : __('ui.Georgian') }}</a>
+                <a href="/set-language/{{ $language === 'ka' ? 'en' : 'ka' }}">{{ $language === 'ka' ? __('ui.english') : __('ui.georgian') }}</a>
             </div>
         </div>
         {{--burgir--}}
@@ -33,7 +33,7 @@
                 <hr class="my-1"/>
                 <form method="POST" class="w-full" action="/logout">
                     @csrf
-                    <button class="text-gray-400">{{ __('ui.Log Out') }}</button>
+                    <button class="text-gray-400">{{ __('ui.log_out') }}</button>
                 </form>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <h1 class="font-bold pr-5 border-r-2">{{ ucwords(auth()->user()->username) }}</h1>
             <form method="POST" action="/logout">
                 @csrf
-                <button class="pl-5">{{ __('ui.Log Out') }}</button>
+                <button class="pl-5">{{ __('ui.log_out') }}</button>
             </form>
         </div>
     </div>

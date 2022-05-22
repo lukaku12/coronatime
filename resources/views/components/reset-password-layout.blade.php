@@ -9,7 +9,7 @@
                          alt="Coronatime"
                     >
                     <div class="mt-4 text-center lg:mt-32">
-                        <h2 class="font-extra-bold text-2xl">{{ __('session.Reset Password') }}</h2>
+                        <h2 class="font-extra-bold text-2xl">{{ __('session.reset_password') }}</h2>
                     </div>
                 </header>
                 <form class="mt-11 lg:w-full" method="POST" action="{{ $action }}">

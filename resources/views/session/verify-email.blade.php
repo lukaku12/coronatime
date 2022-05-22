@@ -8,11 +8,11 @@
                     <div class="w-full flex flex-col items-center">
                         <img class="w-14 h-14" src="{{ asset('assets/succsess.png') }}" alt="">
                     </div>
-                    <h1 class="font-bold">{{__('session.Confirmation Email Has Been Sent!')}}</h1>
-                    <p class="text-gray-400">{{__('session.please confirm your email before we continue')}}</p>
+                    <h1 class="font-bold">{{__('session.confirmation_email_has_been_sent')}}</h1>
+                    <p class="text-gray-400">{{__('session.please_confirm_your_email_before_we_continue')}}</p>
                     <form action="{{ route('verification.request') }}" method="post">
                         @csrf
-                        <x-form.button name="Request a new link"/>
+                        <x-form.button name="request_a_new_link"/>
                     </form>
                 </div>
             </div>

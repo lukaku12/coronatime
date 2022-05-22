@@ -10,9 +10,9 @@
                     <div class="w-full flex flex-col items-center">
                         <img class="w-14 h-14" src="{{ asset('assets/succsess.png') }}" alt="">
                     </div>
-                    <h1 class="font-bold">{{__('session.Your password has been updated successfully')}}</h1>
+                    <h1 class="font-bold">{{__('session.your_password_has_been_updated_successfully')}}</h1>
                     <a href="/login" class="w-full">
-                        <x-form.button name="Sign In"/>
+                        <x-form.button name="sign_in"/>
                     </a>
                 </div>
             </div>

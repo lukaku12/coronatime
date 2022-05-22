@@ -10,7 +10,7 @@
                     <div class="w-full flex flex-col items-center">
                         <img class="w-14 h-14" src="{{ asset('assets/succsess.png') }}" alt="">
                     </div>
-                    <h1 class="font-bold">{{__('session.Confirmation Email Has Been Sent!')}}</h1>
+                    <h1 class="font-bold">{{__('session.confirmation_email_has_been_sent')}}</h1>
                 </div>
             </div>
         </div>

@@ -155,7 +155,7 @@
                                         <tr>
                                             <td style="width:100%;text-align:center;">
                                                 <h1 style="margin: 0; color: #555555; font-size: 27px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 120%; text-align: center; direction: ltr; font-weight: 700; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">
-                                                    <span class="tinyMce-placeholder">Confirmation email</span></h1>
+                                                    <span class="tinyMce-placeholder">{{ __('session.confirmation_email') }}</span></h1>
                                             </td>
                                         </tr>
                                     </table>
@@ -187,7 +187,7 @@
                                         <tr>
                                             <td style="width:100%;text-align:center;">
                                                 <h1 style="margin: 0; color: #555555; font-size: 23px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 120%; text-align: center; direction: ltr; font-weight: 400; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">
-                                                    <span class="tinyMce-placeholder">click this button to verify your email</span>
+                                                    <span class="tinyMce-placeholder">{{ __('session.click_this_button_to_verify_your_email') }}</span>
                                                 </h1>
                                             </td>
                                         </tr>
@@ -236,7 +236,7 @@
                                                             <span
                                                                 style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:1px;"><strong><span
                                                                         data-mce-style="font-size: 16px; line-height: 32px;"
-                                                                        style="font-size: 16px; line-height: 32px;">VERIFY EMAIL</span></strong></span>
+                                                                        style="font-size: 16px; line-height: 32px;">{{ strtoupper(__('session.verify_email')) }}</span></strong></span>
                                                         </div>
                                                     </a>
                                                     <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->

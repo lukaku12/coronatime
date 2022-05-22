@@ -7,7 +7,7 @@
         </a>
     </p>
     <div class="flex items-center justify-center gap-2 text-gray-400 text-sm">
-        <a href="/set-language/ka" class="pr-2 border-r-2">{{strtolower(__('ui.Georgian'))}}</a>
-        <a href="/set-language/en">{{strtolower(__('ui.English'))}}</a>
+        <a href="/set-language/ka" class="pr-2 border-r-2">{{strtolower(__('ui.georgian'))}}</a>
+        <a href="/set-language/en">{{strtolower(__('ui.english'))}}</a>
     </div>
 </div>

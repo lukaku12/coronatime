@@ -3,7 +3,7 @@
         <div class="w-11/12 h-auto">
             <x-header/>
             <main>
-                <x-navigation name="Statistics by country"/>
+                <x-navigation name="statistics_by_country"/>
                 <div class="mt-7">
                     <div class="mt-1 relative rounded-md shadow-sm max-w-sm">
                         <form method="GET">
@@ -14,7 +14,7 @@
                                    name="search"
                                    value="{{ request('search') }}"
                                    class="lg:focus:border lg:focus:border-gray-700  focus:outline-none block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3"
-                                   placeholder="{{ __('ui.Search by country') }}">
+                                   placeholder="{{ __('ui.search_by_country') }}">
                         </form>
                     </div>
                     <div class="mt-7 w-full">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 @if(count($statistics) === 0)
-                    <h1 class="text-center">No Results Found!</h1>
+                    <h1 class="text-center">{{ __('ui.no_results_found') }}</h1>
                 @endif
             </main>
         </div>
