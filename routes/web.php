@@ -21,14 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
 	Route::get('/', [CoronatimeController::class, 'index']);
-	Route::get('set-language/{language}', [LanguageController::class, 'index']);
+	Route::get('set-language/{language}', [LanguageController::class, 'index'])->name('set-language');
 
 	Route::group(['middleware' => 'guest'], function () {
-		Route::get('/register', [RegisterController::class, 'index']);
-		Route::post('/register/create', [RegisterController::class, 'store']);
+		Route::get('/register', [RegisterController::class, 'index'])->name('register');
+		Route::post('/register/create', [RegisterController::class, 'store'])->name('register.create');
 
-		Route::get('/login', [SessionsController::class, 'index']);
-		Route::post('/sessions', [SessionsController::class, 'store']);
+		Route::get('/login', [SessionsController::class, 'index'])->name('login');
+		Route::post('/sessions', [SessionsController::class, 'store'])->name('sessions');
 
 		Route::get('forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 		Route::post('forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
