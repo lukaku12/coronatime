@@ -21,36 +21,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
 	Route::get('/', [CoronatimeController::class, 'index']);
-	Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware(['auth', 'verified'])->name('worldwide');
-	Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware(['auth', 'verified'])->name('by-country');
+	Route::get('set-language/{language}', [LanguageController::class, 'index']);
 
-	Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-	Route::post('/register/create', [RegisterController::class, 'store'])->middleware('guest');
+	Route::group(['middleware' => 'guest'], function () {
+		Route::get('/register', [RegisterController::class, 'index']);
+		Route::post('/register/create', [RegisterController::class, 'store']);
 
-	Route::get('/login', [SessionsController::class, 'index'])->middleware('guest');
-	Route::post('/sessions', [SessionsController::class, 'store'])->middleware('guest');
-	Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+		Route::get('/login', [SessionsController::class, 'index']);
+		Route::post('/sessions', [SessionsController::class, 'store']);
 
-	// reset password
-	Route::get('forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-	Route::post('forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-	Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
-	Route::post('reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+		Route::get('forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+		Route::post('forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+		Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
+		Route::post('reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+	});
 
-	// end reset password
+	Route::group(['middleware' => 'auth'], function () {
+		Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware('verified')->name('worldwide');
+		Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware('verified')->name('by-country');
 
-	//verify email
+		Route::post('/logout', [SessionsController::class, 'destroy']);
 
-	Route::get('/verify-email', [EmailVerificationController::class, 'show'])
-		->middleware('auth')
-		->name('verification.notice');
-
-	Route::post('/verify-email/request', [EmailVerificationController::class, 'request'])
-		->middleware('auth')
-		->name('verification.request');
-
-	Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
-		->middleware(['auth', 'signed'])
-		->name('verification.verify');
+		Route::get('/verify-email', [EmailVerificationController::class, 'show'])->name('verification.notice');
+		Route::post('/verify-email/request', [EmailVerificationController::class, 'request'])->name('verification.request');
+		Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+	});
 });
-Route::get('set-language/{language}', [LanguageController::class, 'index']);
