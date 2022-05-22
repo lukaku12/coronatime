@@ -20,7 +20,7 @@ class UpdateCovidData extends Command
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description';
+	protected $description = 'Update Database From Api EveryDay';
 
 	/**
 	 * Execute the console command.
