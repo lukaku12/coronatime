@@ -56,7 +56,7 @@ class PasswordResetController extends Controller
 		{
 			{
 				throw ValidationException::withMessages([
-					'password_confirmation' => 'Passwords Do Not Match!',
+					'password_confirmation' => __('session.passwords_do_not_match'),
 				]);
 			}
 		}

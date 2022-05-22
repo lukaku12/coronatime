@@ -23,10 +23,10 @@ class SessionsController extends Controller
 			$fieldType    => $fieldType === 'username' ? 'required|min:3|max:256' : 'required|email',
 			'password'    => 'required',
 		]);
-		if (!auth()->attempt($attributes, ))
+		if (!auth()->attempt($attributes, request()->has('remember_device')))
 		{
 			throw ValidationException::withMessages([
-				'password' => __('session.Your provided credentials could not be verified.'),
+				'password' => __('session.your_provided_credentials_could_not_be_verified.'),
 			]);
 		}
 		session()->regenerate();
