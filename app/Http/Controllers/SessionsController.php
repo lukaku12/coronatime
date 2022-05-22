@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
 {
-	public function index()
+	public function index(): View
 	{
 		return view('session.login');
 	}
 
-	public function store()
+	public function store(): RedirectResponse
 	{
 		$login = request()->input('username');
 		$fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
@@ -32,7 +34,7 @@ class SessionsController extends Controller
 		return redirect('/')->with('success', 'Welcome Back!');
 	}
 
-	public function destroy()
+	public function destroy(): RedirectResponse
 	{
 		auth()->logout();
 

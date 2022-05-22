@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class CoronatimeController extends Controller
 {
-	public function index()
+	public function index(): RedirectResponse
 	{
 		if (!auth()->user())
 		{
@@ -15,7 +17,7 @@ class CoronatimeController extends Controller
 		return redirect('/worldwide');
 	}
 
-	public function show()
+	public function show(): View
 	{
 		$statistics = Statistic::all();
 		$total_cases = 0;
@@ -34,7 +36,7 @@ class CoronatimeController extends Controller
 		]);
 	}
 
-	public function showByCountry()
+	public function showByCountry(): View
 	{
 		return view('by-country', [
 			'statistics'  => Statistic::orderBy(request('sort_by') ?? 'confirmed', request('order_direction') ?? 'DESC')

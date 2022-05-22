@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -12,12 +13,12 @@ use Illuminate\Validation\ValidationException;
 
 class PasswordResetController extends Controller
 {
-	public function showForgetPasswordForm()
+	public function showForgetPasswordForm(): View
 	{
 		return view('session.forgot-password');
 	}
 
-	public function submitForgetPasswordForm(Request $request)
+	public function submitForgetPasswordForm(Request $request): View
 	{
 		$request->validate([
 			'email' => 'required|email|exists:users',
@@ -40,12 +41,12 @@ class PasswordResetController extends Controller
 		return view('session.sent-email-to-reset-password');
 	}
 
-	public function showResetPasswordForm($token)
+	public function showResetPasswordForm($token): View
 	{
 		return view('session.reset-password', ['token' => $token]);
 	}
 
-	public function submitResetPasswordForm(Request $request)
+	public function submitResetPasswordForm(Request $request): View
 	{
 		$request->validate([
 			'password'              => 'required|min:6',

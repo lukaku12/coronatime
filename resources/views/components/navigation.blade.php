@@ -1,5 +1,4 @@
 @props(['name'])
-{{--active="{{\Illuminate\Support\Facades\Route::current()->getName() === 'worldwide'}}"--}}
 
 <div class="w-full">
     <h1 class="my-7 font-bold text-2xl">{{ __('ui.' . $name) }}</h1>
