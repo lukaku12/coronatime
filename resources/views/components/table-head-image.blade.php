@@ -6,6 +6,6 @@
         $classes = ' opacity-100';
     }
 @endphp
-<a href="/by-country/?sort_by={{ $name }}&order_direction={{$direction}}&{{http_build_query(request()->except('sort_by', 'page', 'order_direction'))}}">
+<a href="/by-country/?sort_by={{$name === 'country' ? $name . '->' . app()->getLocale() : $name }}&order_direction={{$direction}}&{{http_build_query(request()->except('sort_by', 'page', 'order_direction'))}}">
     <img class="{{ $classRotate . $classes }}" src="{{asset('assets/downArrow.png')}}" alt="">
 </a>
