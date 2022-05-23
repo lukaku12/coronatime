@@ -6,7 +6,7 @@
     $urlActiveDESC_WithSearch = '/by-country?order_direction=DESC&search=' . request('search') . '&sort_by=' . $name;
 @endphp
 <th scope="col"
-    class="py-3.5 text-left text-sm font-semibold text-gray-900 text-xs lg:text-lg"
+    class="py-3.5 text-left text-sm font-semibold text-gray-900 text-xs lg:text-lg break-all"
 >
     <div class="flex gap-2">
         {{ __('ui.' . $title) }}
