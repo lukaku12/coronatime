@@ -18,7 +18,7 @@
                         </form>
                     </div>
                     <div class="mt-7 w-full">
-                        <table class="table-fixed h-1/3 divide-y divide-gray-300 w-full border-gray-300 border mb-5"
+                        <table class="table-fixed md:table-auto h-1/3 divide-y divide-gray-300 w-full border-gray-300 border mb-5"
                         >
                             <x-table-head/>
                             <tbody class="overflow-y-scroll divide-y divide-gray-200 bg-white max-w-full"

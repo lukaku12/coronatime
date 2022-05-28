@@ -645,9 +645,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .whitespace-nowrap {
   white-space: nowrap;
 }
-.break-words {
-  overflow-wrap: break-word;
-}
 .break-all {
   word-break: break-all;
 }
@@ -798,7 +795,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: .875rem;
 }
 .text-xs {
-  font-size: .75rem;
+  font-size: .6rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -969,6 +966,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: .875rem;
   }
 }
+@media (min-width: 768px) {
+
+  .md\:table-auto {
+    table-layout: auto;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+  }
+}
 @media (min-width: 1024px) {
 
   .lg\:static {
@@ -1070,6 +1077,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:text-lg {
     font-size: 1.125rem;
+  }
+
+  .lg\:text-xl {
+    font-size: 1.25rem;
   }
 
   .lg\:focus\:border:focus {

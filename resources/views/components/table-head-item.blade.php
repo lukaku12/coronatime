@@ -1,4 +1,4 @@
-@props(['name', 'title',])
+@props(['name', 'title', 'class' => ''])
 @php
     $urlActiveASC = "/by-country?order_direction=ASC&sort_by=$name";
     $urlActiveASC_WithSearch = '/by-country?order_direction=ASC&search=' . request('search') . '&sort_by=' . $name;
@@ -6,9 +6,9 @@
     $urlActiveDESC_WithSearch = '/by-country?order_direction=DESC&search=' . request('search') . '&sort_by=' . $name;
 @endphp
 <th scope="col"
-    class="py-3.5 text-left text-sm font-semibold text-gray-900 text-xs lg:text-lg break-all"
+    class="py-3.5 text-left text-xs md:text-base lg:text-xl font-semibold text-gray-900 text-xs break-all"
 >
-    <div class="flex gap-2">
+    <div class="flex gap-2 {{ $class }}">
         {{ __('ui.' . $title) }}
         <div class="flex flex-col gap-1 lg:mt-1.5">
             <x-table-head-image
