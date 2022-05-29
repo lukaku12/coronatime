@@ -26,7 +26,7 @@ class SessionsController extends Controller
 		if (!auth()->attempt($attributes, request()->has('remember_device')))
 		{
 			throw ValidationException::withMessages([
-				'password' => __('session.your_provided_credentials_could_not_be_verified.'),
+				'password' => __('session.your_provided_credentials_could_not_be_verified'),
 			]);
 		}
 		session()->regenerate();

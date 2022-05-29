@@ -791,11 +791,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl {
   font-size: 1.5rem;
 }
-.text-sm {
-  font-size: .875rem;
-}
 .text-xs {
   font-size: .6rem;
+}
+.text-sm {
+  font-size: .875rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -1075,12 +1075,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     justify-content: center;
   }
 
-  .lg\:text-lg {
-    font-size: 1.125rem;
-  }
-
   .lg\:text-xl {
     font-size: 1.25rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
   }
 
   .lg\:focus\:border:focus {

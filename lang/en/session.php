@@ -35,7 +35,7 @@ return [
 	'request_a_new_link'                                => 'Request a new link',
 	'sign_in'                                           => 'Sign In',
 	'your_password_has_been_updated_successfully'       => 'Your password has been updated successfully',
-	// recover passwor
+	// recover password
 	'recover_password'                                  => 'Recover Password',
 	'click_this_button_to_recover_a_password'           => 'click this button to recover a password',
 	//confirm email
