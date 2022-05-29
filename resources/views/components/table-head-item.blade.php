@@ -10,7 +10,7 @@
 >
     <div class="flex gap-2 {{ $class }}">
         {{ __('ui.' . $title) }}
-        <div class="flex flex-col gap-1 lg:mt-1.5">
+        <div class="flex flex-col gap-1">
             <x-table-head-image
                 :name="$name"
                 direction="ASC"
