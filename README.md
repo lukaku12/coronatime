@@ -31,7 +31,7 @@ and see all latest world covid statistics.
 #
 ### Tech Stack 
 
-* <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 4px" /> [Laravel@9.12.2.x](https://laravel.com/docs/9.x) - back-end framework
+* <img src="readme/assets/laravel.png" height="20" style="position: relative; top: 4px" /> [Laravel@9.12.2.x](https://laravel.com/docs/9.x) - back-end framework
 * <img src="readme/assets/spatie.png" height="19" style="position: relative; top: 4px" /> [Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
 
 #
