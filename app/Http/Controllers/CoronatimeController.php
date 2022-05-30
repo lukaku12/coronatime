@@ -19,16 +19,9 @@ class CoronatimeController extends Controller
 
 	public function show(): View
 	{
-		$statistics = Statistic::all();
-		$total_cases = 0;
-		$recovered = 0;
-		$deaths = 0;
-		foreach ($statistics as $statistic)
-		{
-			$total_cases += $statistic->confirmed;
-			$recovered += $statistic->recovered;
-			$deaths += $statistic->deaths;
-		}
+		$total_cases = Statistic::sum('confirmed');
+		$recovered = Statistic::sum('recovered');
+		$deaths = Statistic::sum('deaths');
 		return view('index', [
 			'total_cases' => $total_cases,
 			'recovered'   => $recovered,
