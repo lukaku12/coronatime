@@ -108,7 +108,7 @@ php artisan migrate
 ### Get Data In Database
 You need to run command in terminal to fetch data from api and add it to database
 ```sh
-php artisan create:covid-data
+php artisan get:covid-data
 ```
 
 [//]: # (### Running Unit tests)
