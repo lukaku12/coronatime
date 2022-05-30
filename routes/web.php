@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
 	Route::get('/', [CoronatimeController::class, 'index']);
-	Route::get('set-language/{language}', [LanguageController::class, 'index'])->name('set-language');
+	Route::get('/set-language/{language}', [LanguageController::class, 'index'])->name('set-language');
 
 	Route::group(['middleware' => 'guest'], function () {
 		Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -30,10 +30,10 @@ Route::group(['middleware' => 'language'], function () {
 		Route::get('/login', [SessionsController::class, 'index'])->name('login');
 		Route::post('/sessions', [SessionsController::class, 'store'])->name('sessions');
 
-		Route::get('forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-		Route::post('forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-		Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
-		Route::post('reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+		Route::get('/forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+		Route::post('/forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+		Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
+		Route::post('/reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 	});
 
 	Route::group(['middleware' => 'auth'], function () {
