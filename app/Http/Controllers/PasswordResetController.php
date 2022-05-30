@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordResetRequest;
+use App\Http\Requests\SubmitPasswordResetRequest;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
@@ -18,11 +19,8 @@ class PasswordResetController extends Controller
 		return view('session.forgot-password');
 	}
 
-	public function submitForgetPasswordForm(Request $request): View
+	public function submitForgetPasswordForm(PasswordResetRequest $request): View
 	{
-		$request->validate([
-			'email' => 'required|email|exists:users',
-		]);
 		session()->put('email', $request->email);
 
 		$token = Str::random(64);
@@ -46,21 +44,8 @@ class PasswordResetController extends Controller
 		return view('session.reset-password', ['token' => $token]);
 	}
 
-	public function submitResetPasswordForm(Request $request): View
+	public function submitResetPasswordForm(SubmitPasswordResetRequest $request): View
 	{
-		$request->validate([
-			'password'              => 'required|min:6',
-			'password_confirmation' => 'required',
-		]);
-		if ($request->password !== $request->password_confirmation)
-		{
-			{
-				throw ValidationException::withMessages([
-					'password_confirmation' => __('session.passwords_do_not_match'),
-				]);
-			}
-		}
-
 		$updatePassword = DB::table('password_resets')
 			->where([
 				'email' => $request->session()->get('email'),
