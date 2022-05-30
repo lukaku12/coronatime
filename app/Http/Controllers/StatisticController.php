@@ -6,7 +6,7 @@ use App\Models\Statistic;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class CoronatimeController extends Controller
+class StatisticController extends Controller
 {
 	public function index(): RedirectResponse
 	{

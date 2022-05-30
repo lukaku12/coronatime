@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CoronatimeController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PasswordResetController;
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'language'], function () {
-	Route::get('/', [CoronatimeController::class, 'index']);
+	Route::get('/', [StatisticController::class, 'index']);
 	Route::get('/set-language/{language}', [LanguageController::class, 'index'])->name('set-language');
 
 	Route::group(['middleware' => 'guest'], function () {
@@ -37,8 +37,8 @@ Route::group(['middleware' => 'language'], function () {
 	});
 
 	Route::group(['middleware' => 'auth'], function () {
-		Route::get('/worldwide', [CoronatimeController::class, 'show'])->middleware('verified')->name('worldwide');
-		Route::get('/by-country', [CoronatimeController::class, 'showByCountry'])->middleware('verified')->name('by-country');
+		Route::get('/worldwide', [StatisticController::class, 'show'])->middleware('verified')->name('worldwide');
+		Route::get('/by-country', [StatisticController::class, 'showByCountry'])->middleware('verified')->name('by-country');
 
 		Route::post('/logout', [SessionsController::class, 'destroy']);
 
