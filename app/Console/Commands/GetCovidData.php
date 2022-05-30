@@ -37,7 +37,7 @@ class GetCovidData extends Command
 			extract($country);
 			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code])->json();
 			extract($statistics);
-			$data = [
+			Statistic::create([
 				'country'    => $name,
 				'code'       => $code,
 				'confirmed'  => $confirmed,
@@ -46,8 +46,7 @@ class GetCovidData extends Command
 				'deaths'     => $deaths,
 				'created_at' => $created_at,
 				'updated_at' => $updated_at,
-			];
-			Statistic::create($data);
+			]);
 		}
 		$this->info('Database Updated Successfully');
 		return 0;
