@@ -29,16 +29,17 @@ class GetCovidData extends Command
 	 */
 	public function handle()
 	{
+		$this->info('Started Updating Database!');
+
 		$countries = Http::get('https://devtest.ge/countries')->json();
 
 		foreach ($countries as $country)
 		{
-			extract($country);
-			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code])->json();
-			extract($statistics);
+			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
 			Statistic::updateOrCreate($statistics);
 		}
-		$this->info('Database Updated Successfully');
+
+		$this->info('Database Updated Successfully!');
 		return 0;
 	}
 }

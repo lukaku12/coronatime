@@ -13,7 +13,7 @@ class UpdateCovidData extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'update:data';
+	protected $signature = 'update:covid-data';
 
 	/**
 	 * The console command description.
@@ -29,17 +29,18 @@ class UpdateCovidData extends Command
 	 */
 	public function handle()
 	{
+		$this->info('Started Updating Database!');
+
 		$countries = Http::get('https://devtest.ge/countries')->json();
 
 		foreach ($countries as $country)
 		{
-			extract($country);
-			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code])->json();
-			extract($statistics);
-			$statistic = Statistic::find($id);
+			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
+			$statistic = Statistic::find($statistics['id']);
 			$statistic->update($statistics);
 		}
-		$this->info('Database Updated Successfully');
+
+		$this->info('Database Updated Successfully!');
 		return 0;
 	}
 }
