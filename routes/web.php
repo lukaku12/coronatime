@@ -5,7 +5,7 @@ use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,8 +27,8 @@ Route::group(['middleware' => 'language'], function () {
 		Route::get('/register', [RegisterController::class, 'index'])->name('register');
 		Route::post('/register/create', [RegisterController::class, 'store'])->name('register.create');
 
-		Route::get('/login', [SessionsController::class, 'index'])->name('login');
-		Route::post('/sessions', [SessionsController::class, 'store'])->name('sessions');
+		Route::get('/login', [AuthController::class, 'index'])->name('login');
+		Route::post('/sessions', [AuthController::class, 'store'])->name('sessions');
 
 		Route::get('/forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 		Route::post('/forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'language'], function () {
 		Route::get('/worldwide', [StatisticController::class, 'show'])->middleware('verified')->name('worldwide');
 		Route::get('/by-country', [StatisticController::class, 'showByCountry'])->middleware('verified')->name('by-country');
 
-		Route::post('/logout', [SessionsController::class, 'destroy']);
+		Route::post('/logout', [AuthController::class, 'destroy']);
 
 		Route::get('/verify-email', [EmailVerificationController::class, 'show'])->name('verification.notice');
 		Route::post('/verify-email/request', [EmailVerificationController::class, 'request'])->name('verification.request');
