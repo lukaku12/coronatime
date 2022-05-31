@@ -36,7 +36,17 @@ class GetCovidData extends Command
 		foreach ($countries as $country)
 		{
 			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
-			Statistic::updateOrCreate($statistics);
+			Statistic::updateOrCreate([
+				'id'         => $statistics['id'],
+				'country'    => $country['name'],
+				'code'       => $statistics['code'],
+				'confirmed'  => $statistics['confirmed'],
+				'recovered'  => $statistics['recovered'],
+				'critical'   => $statistics['critical'],
+				'deaths'     => $statistics['deaths'],
+				'created_at' => $statistics['created_at'],
+				'updated_at' => $statistics['updated_at'],
+			]);
 		}
 
 		$this->info('Database Updated Successfully!');

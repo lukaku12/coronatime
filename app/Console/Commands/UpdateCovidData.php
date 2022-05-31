@@ -37,7 +37,17 @@ class UpdateCovidData extends Command
 		{
 			$statistics = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
 			$statistic = Statistic::find($statistics['id']);
-			$statistic->update($statistics);
+			$statistic->update([
+				'id'         => $statistics['id'],
+				'country'    => $country['name'],
+				'code'       => $statistics['code'],
+				'confirmed'  => $statistics['confirmed'],
+				'recovered'  => $statistics['recovered'],
+				'critical'   => $statistics['critical'],
+				'deaths'     => $statistics['deaths'],
+				'created_at' => $statistics['created_at'],
+				'updated_at' => $statistics['updated_at'],
+			]);
 		}
 
 		$this->info('Database Updated Successfully!');

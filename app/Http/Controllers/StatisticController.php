@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Statistic;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
@@ -29,10 +30,13 @@ class StatisticController extends Controller
 		]);
 	}
 
-	public function showByCountry(): View
+	public function showByCountry(Request $request): View
 	{
+		$orderByKey = $request->sort_by ?? 'confirmed';
+		$orderByDirection = $request->order_direction ?? 'DESC';
+
 		return view('by-country', [
-			'statistics'  => Statistic::orderBy(request('sort_by') ?? 'confirmed', request('order_direction') ?? 'DESC')
+			'statistics' => Statistic::orderBy($orderByKey, $orderByDirection)
 				->filter(request(['search']))->get(),
 		]);
 	}
