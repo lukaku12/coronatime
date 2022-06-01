@@ -14,11 +14,6 @@ use Illuminate\Validation\ValidationException;
 
 class PasswordResetController extends Controller
 {
-	public function showForgetPasswordForm(): View
-	{
-		return view('session.forgot-password');
-	}
-
 	public function submitForgetPasswordForm(PasswordResetRequest $request): View
 	{
 		session()->put('email', $request->email);

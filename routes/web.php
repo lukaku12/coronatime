@@ -24,13 +24,13 @@ Route::group(['middleware' => 'language'], function () {
 	Route::get('/set-language/{language}', [LanguageController::class, 'index'])->name('set-language');
 
 	Route::group(['middleware' => 'guest'], function () {
-		Route::get('/register', [RegisterController::class, 'index'])->name('register');
+		Route::view('/register', 'session.register')->name('register');
 		Route::post('/register/create', [RegisterController::class, 'store'])->name('register.create');
 
-		Route::get('/login', [AuthController::class, 'index'])->name('login');
+		Route::view('/login', 'session.login')->name('login');
 		Route::post('/sessions', [AuthController::class, 'store'])->name('sessions');
 
-		Route::get('/forget-password', [PasswordResetController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+		Route::view('/forget-password', 'session.forgot-password')->name('forget.password.get');
 		Route::post('/forget-password', [PasswordResetController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 		Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password.get');
 		Route::post('/reset-password', [PasswordResetController::class, 'submitResetPasswordForm'])->name('reset.password.post');

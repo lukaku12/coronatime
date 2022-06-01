@@ -5,17 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
-	public function index(): View
-	{
-		return view('session.register');
-	}
-
 	public function store(RegisterRequest $request): RedirectResponse
 	{
 		if ($request->password !== $request->repeat_password)

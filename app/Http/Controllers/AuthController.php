@@ -9,11 +9,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-	public function index(): View
-	{
-		return view('session.login');
-	}
-
 	public function store(AuthRequest $request): RedirectResponse
 	{
 		if (!auth()->attempt($request->except('_token'), $request->has('remember_device')))
