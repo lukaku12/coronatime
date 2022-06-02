@@ -23,6 +23,11 @@
                             <x-table-head/>
                             <tbody class="overflow-y-scroll divide-y divide-gray-200 bg-white max-w-full"
                             >
+                            <x-table-row :location="$world_wide['world_wide']"
+                                         :new_cases="$world_wide['confirmed']"
+                                         :death="$world_wide['deaths']"
+                                         :recovered="$world_wide['recovered']"
+                            />
                                 @foreach($statistics as $statistic)
                                     <x-table-row :location="$statistic->country"
                                                  :new_cases="$statistic->confirmed"
