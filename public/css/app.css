@@ -555,9 +555,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-5 {
   width: 1.25rem;
 }
-.min-w-full {
-  min-width: 100%;
-}
 .max-w-sm {
   max-width: 24rem;
 }
@@ -647,9 +644,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .whitespace-nowrap {
   white-space: nowrap;
-}
-.break-words {
-  overflow-wrap: break-word;
 }
 .break-all {
   word-break: break-all;
