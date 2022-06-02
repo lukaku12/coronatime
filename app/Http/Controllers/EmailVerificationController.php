@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 
 class EmailVerificationController extends Controller
 {
-	public function show(): View
+	public function show(): View | RedirectResponse
 	{
 		if (auth()->user()->hasVerifiedEmail())
 		{
@@ -21,8 +21,7 @@ class EmailVerificationController extends Controller
 	{
 		auth()->user()->sendEmailVerificationNotification();
 
-		return back()
-			->with('success', 'Verification link sent!');
+		return back();
 	}
 
 	public function verify(EmailVerificationRequest $request): RedirectResponse

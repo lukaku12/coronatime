@@ -16,6 +16,19 @@ class RegisterTest extends TestCase
 		$response->assertStatus(200);
 	}
 
+	public function test_show_error_massage_to_new_user_if_user_entered_passwords_are_not_same()
+	{
+		$this->withExceptionHandling();
+
+		$response = $this->post('/register/create', [
+			'username'        => 'gela',
+			'email'           => 'gela@gelovani.com',
+			'password'        => 'gela123',
+			'repeat_password' => 'gela',
+		]);
+		$response->assertSessionHasErrors(['password', 'repeat_password']);
+	}
+
 	public function test_new_users_can_register()
 	{
 		$response = $this->post('/register/create', [

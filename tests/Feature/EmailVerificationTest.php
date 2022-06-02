@@ -14,6 +14,17 @@ class EmailVerificationTest extends TestCase
 {
 	use RefreshDatabase;
 
+	public function test_check_if_user_has_verified_email()
+	{
+		$user = User::factory()->create([
+			'email_verified_at' => date('Y-m-d H:i:s'),
+		]);
+
+		$response = $this->actingAs($user)->get('/verify-email');
+
+		$response->assertRedirect('/');
+	}
+
 	public function test_email_verification_screen_can_be_rendered()
 	{
 		$user = User::factory()->create([
