@@ -35,7 +35,6 @@ class StatisticController extends Controller
 		$orderByKey = $request->sort_by ?? 'confirmed';
 		$orderByDirection = $request->order_direction ?? 'DESC';
 		$world_wide = [
-			'world_wide' => 'World Wide',
 			'confirmed'  => Statistic::sum('confirmed'),
 			'recovered'  => Statistic::sum('recovered'),
 			'deaths'     => Statistic::sum('deaths'),
