@@ -11,7 +11,7 @@ class StatisticTest extends TestCase
 	use RefreshDatabase;
 
 	/** @test */
-	public function this_redirect_user_from_home_if_user_is_not_authenticated()
+	public function test_redirect_user_from_home_to_login_if_user_is_not_authenticated()
 	{
 		$this->withExceptionHandling();
 		$response = $this->get('/');
@@ -20,7 +20,7 @@ class StatisticTest extends TestCase
 	}
 
 	/** @test */
-	public function test_check_if_user_is_authenticated_to_see_worldwide_statistics_page()
+	public function test_redirect_user_from_home_to_worldwide_statistics_page_if_user_is_authenticated()
 	{
 		$this->withoutExceptionHandling();
 		$user = User::factory()->create(['password' => bcrypt('gela')]);
@@ -52,7 +52,7 @@ class StatisticTest extends TestCase
 	}
 
 	/** @test */
-	public function test_check_if_user_is_authenticated_to_see_statistics_by_country_page()
+	public function test_a_user_can_see_statistics_by_country_page()
 	{
 		$user = User::factory()->create(['password' => bcrypt('gela')]);
 		$response = $this->post('/sessions', [
