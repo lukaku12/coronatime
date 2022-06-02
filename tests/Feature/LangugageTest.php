@@ -11,7 +11,7 @@ class LangugageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function test_user_can_change_apps_local_language()
+	public function test_user_can_change_application_local_language()
 	{
 		$this->withoutExceptionHandling();
 		$this->withMiddleware();
