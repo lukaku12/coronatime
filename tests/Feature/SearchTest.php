@@ -11,7 +11,7 @@ class SearchTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function test_example()
+	public function test_users_can_search_in_statistics_by_country_page()
 	{
 		$this->withoutExceptionHandling();
 		$user = User::factory()->create(['password' => bcrypt('gela')]);
