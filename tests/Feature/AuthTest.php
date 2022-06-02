@@ -25,10 +25,20 @@ class AuthTest extends TestCase
 	}
 
 	/* @test */
+	public function test_show_error_massage_if_user_is_entering_incorrect_credentials()
+	{
+		$this->withExceptionHandling();
+
+		$response = $this->post('/sessions', [
+			'username' => 'gela',
+			'password' => 'gela12345',
+		]);
+		$response->assertSessionHasErrors(['password']);
+	}
+
+	/* @test */
 	public function test_users_can_authenticate_using_the_login_screen()
 	{
-		$this->withoutExceptionHandling();
-
 		$user = User::factory()->create(['password' => bcrypt('gela')]);
 		$response = $this->post('/sessions', [
 			'username' => $user->username,
@@ -36,6 +46,17 @@ class AuthTest extends TestCase
 		]);
 
 		$this->assertAuthenticated();
+		$response->assertRedirect(RouteServiceProvider::HOME);
+	}
+
+	/* @test */
+	public function test_users_can_logout()
+	{
+		$user = User::factory()->create();
+		$this->be($user);
+
+		$response = $this->post('logout');
+		$this->assertGuest();
 		$response->assertRedirect(RouteServiceProvider::HOME);
 	}
 }
