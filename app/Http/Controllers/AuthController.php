@@ -10,9 +10,16 @@ class AuthController extends Controller
 {
 	public function store(AuthRequest $request): RedirectResponse
 	{
-		if (!auth()->attempt($request->except(['_token', 'remember_device']), $request->has('remember_device')))
+		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$request->merge([$fieldType => $request->username]);
+
+		if (!auth()->attempt(
+			[$fieldType => $request->$fieldType, 'password' => $request->password],
+			$request->has('remember_device')
+		))
 		{
 			throw ValidationException::withMessages([
+				'username' => __('session.your_provided_credentials_could_not_be_verified'),
 				'password' => __('session.your_provided_credentials_could_not_be_verified'),
 			]);
 		}

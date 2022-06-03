@@ -23,11 +23,8 @@ class AuthRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		$login = request()->input('username');
-		$fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-		request()->merge([$fieldType => $login]);
 		return[
-			$fieldType    => $fieldType === 'username' ? 'required|min:3|max:256' : 'required|email',
+			'username'    => 'required|min:3|max:256',
 			'password'    => 'required',
 		];
 	}
