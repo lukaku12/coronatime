@@ -38,5 +38,6 @@ class UpdateCovidDataTest extends TestCase
 		]);
 
 		$this->artisan('update:covid-data')->assertExitCode(0);
+		$this->assertDatabaseCount('statistics', 1);
 	}
 }

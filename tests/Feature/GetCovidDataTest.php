@@ -17,7 +17,7 @@ class GetCovidDataTest extends TestCase
 			['code' => 'GE', 'name' => ['en' => 'Georgia', 'ka' => 'საქართველო']],
 		];
 		Http::fake([
-			'https://devtest.ge/countries' => Http::response($countries, 200),
+			'https://devtest.ge/countries' => Http::response(json_encode($countries), 200),
 		]);
 		$statistic = [
 			'id'          => 29,
@@ -31,9 +31,10 @@ class GetCovidDataTest extends TestCase
 			'updated_at'  => '2021-09-13T11:43:39.000000Z',
 		];
 		Http::fake([
-			'https://devtest.ge/get-country-statistics' => Http::response($statistic, 200),
+			'https://devtest.ge/get-country-statistics' => Http::response(json_encode($statistic), 200),
 		]);
 
 		$this->artisan('get:covid-data')->assertExitCode(0);
+		$this->assertDatabaseCount('statistics', 1);
 	}
 }

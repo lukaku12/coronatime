@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
 	public function store(AuthRequest $request): RedirectResponse
 	{
-		if (!auth()->attempt($request->except('_token'), $request->has('remember_device')))
+		if (!auth()->attempt($request->except(['_token', 'remember_device']), $request->has('remember_device')))
 		{
 			throw ValidationException::withMessages([
 				'password' => __('session.your_provided_credentials_could_not_be_verified'),
